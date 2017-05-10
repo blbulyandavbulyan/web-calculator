@@ -7,23 +7,23 @@
 </head>
 <body><div id="fl1">
 	 <form method="GET">
-	 <input type="text" placeholder="Число a" name="a">
-	 <input type="text" placeholder="Число b" name="b"></div><div id="fl2">
+	 <input type="text" placeholder="Number a" name="a">
+	 <input type="text" placeholder="Number b" name="b"></div><div id="fl2">
 	 <input type="radio" id="sm" name="oper" value='+'>
-	 <label for="sm" class="radio">Сумма</label>
+	 <label for="sm" class="radio">Amount</label>
 	 <input type="radio" id="sub" name="oper" value='-'>
-	 <label for="sub" class="radio">Вычитание</label>
+	 <label for="sub" class="radio">Subtraction</label>
 	 <input type="radio" id="mul" name="oper" value='*'>
-	 <label for="mul" class="radio">Умножение</label>
+	 <label for="mul" class="radio">Multiplication</label>
 	 <input type="radio" id="di" name="oper" value='/'>
-	 <label for="di" class="radio">Деление</label>
+	 <label for="di" class="radio">Division</label>
 	 <input type="radio" id="trtap" name="oper" value="**">
-	 <label for="trtap" class="radio">В степень</label>
-	 <input type="submit" name="res" value="Посчитать">
-	 <input type="reset" value="Очистить">
+	 <label for="trtap" class="radio">Raise to the power of</label>
+	 <input type="submit" name="res" value="Count">
+	 <input type="reset" value="Clear">
 	 </form>
 	 <form method="GET">
-		<input type="submit" name="cl" value="Почистить">
+		<input type="submit" name="cl" value="Clean up">
 	</form></div>
 	 <?php
 		$clear = $_GET['cl'];
