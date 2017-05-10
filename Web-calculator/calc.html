@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+ <title>Калькулятор</title>
+ <link rel="stylesheet" type="text/css" href="http://192.168.1.58/Web/Calc/Style/CSS/style.css">
+ <link rel="shortcut icon" href="http://192.168.1.58/Web/Calc/Style/Icon/favicon.ico" type="image/x-icon">
+</head>
+<body><div id="fl1">
+	 <form method="GET">
+	 <input type="text" placeholder="Число a" name="a">
+	 <input type="text" placeholder="Число b" name="b"></div><div id="fl2">
+	 <input type="radio" id="sm" name="oper" value='+'>
+	 <label for="sm" class="radio">Сумма</label>
+	 <input type="radio" id="sub" name="oper" value='-'>
+	 <label for="sub" class="radio">Вычитание</label>
+	 <input type="radio" id="mul" name="oper" value='*'>
+	 <label for="mul" class="radio">Умножение</label>
+	 <input type="radio" id="di" name="oper" value='/'>
+	 <label for="di" class="radio">Деление</label>
+	 <input type="radio" id="trtap" name="oper" value="**">
+	 <label for="trtap" class="radio">В степень</label>
+	 <input type="submit" name="res" value="Посчитать">
+	 <input type="reset" value="Очистить">
+	 </form>
+	 <form method="GET">
+		<input type="submit" name="cl" value="Почистить">
+	</form></div>
+	 <?php
+		$clear = $_GET['cl'];
+		if($clear == 'Почистить'){
+			clear();
+		}
+		else{
+			calc();
+		}
+		function calc(){
+		$a = $_GET['a'];
+		$b = $_GET['b'];
+		$radio = $_GET['oper'];
+		 if($_GET['res'] && $radio){
+			if($radio == '+'){$c = $a + $b; print "<input id='res1' type=text value='$a $radio $b = $c' >";}
+			if($radio == '-'){$c = $a - $b; print "<input id='res1' type=text value='$a $radio $b = $c' >";}
+			if($radio == '*'){$c = $a * $b; print "<input id='res1' type=text value='$a $radio $b = $c' >";}
+			if($radio == '/'){$c = $a / $b; print "<input id='res1' type=text value='$a $radio $b = $c' >";}
+			if($radio == '**'){$c = $a ** $b; print "<input id='res1' type=text value='$a $radio $b = $c' >";}
+		}
+
+			else{
+				echo 'Упс что-то пошло не так.';
+			}
+		}
+		function clear(){
+			unset($_GET['a'], $_GET['b'], $_GET['oper']);
+		}
+			
+	 ?>
+	
+</body>
+</html>
