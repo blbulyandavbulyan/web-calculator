@@ -4,9 +4,10 @@
  <title>Сalculator</title>
  <link rel="stylesheet" type="text/css" href="/Style/CSS/style.css">
  <link rel="shortcut icon" href="/Style/Icon/favicon.ico" type="image/x-icon">
+ <meta charset="UTF-8">
 </head>
 <body><div id="fl1">
-	 <form method="GET">
+	 <form method="POST">
 	 <input type="text" placeholder="Number a" name="a">
 	 <input type="text" placeholder="Number b" name="b"></div><div id="fl2">
 	 <input type="radio" id="sm" name="oper" value='+'>
@@ -22,38 +23,42 @@
 	 <input type="submit" name="res" value="Count">
 	 <input type="reset" value="Clear">
 	 </form>
-	 <form method="GET">
+	 <form method="POST">
 		<input type="submit" name="cl" value="Clean up">
 	</form></div>
 	 <?php
-		$clear = $_GET['cl'];
-		if($clear == 'Почистить'){
+		$clear = isset($_POST['cl']);
+		if($clear == 'Clean up'){
 			clear();
 		}
 		else{
 			calc();
 		}
 		function calc(){
-		$a = $_GET['a'];
-		$b = $_GET['b'];
-		$radio = $_GET['oper'];
-		 if($_GET['res'] && $radio){
+			if($_POST['res'] && isset($_POST['oper']) && $_POST['a'] !== NULL && $_POST['b'] !== NULL){
+			$a = $_POST['a'];
+			$b = $_POST['b'];
+			$radio = $_POST['oper'];
+			if($b == 0 && $radio == '/'){
+				print "<input id='res1' type=text value='We divide by zero ....' >";
+			}
+			else{
 			if($radio == '+'){$c = $a + $b; print "<input id='res1' type=text value='$a $radio $b = $c' >";}
 			if($radio == '-'){$c = $a - $b; print "<input id='res1' type=text value='$a $radio $b = $c' >";}
 			if($radio == '*'){$c = $a * $b; print "<input id='res1' type=text value='$a $radio $b = $c' >";}
 			if($radio == '/'){$c = $a / $b; print "<input id='res1' type=text value='$a $radio $b = $c' >";}
 			if($radio == '**'){$c = $a ** $b; print "<input id='res1' type=text value='$a $radio $b = $c' >";}
+			}
 		}
 
 			else{
-				echo 'Oops, something went wrong.';
+				print "<input id='res1' type=text value='Oops, something went wrong...' >";
 			}
 		}
 		function clear(){
-			unset($_GET['a'], $_GET['b'], $_GET['oper']);
-		}
-			
+			unset($_POST['a'], $_POST['b'], $_POST['oper']);
+		}	
 	 ?>
 	
 </body>
-</html>
+</html>.
